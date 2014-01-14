@@ -54,9 +54,9 @@ CandyShop.Notifications = (function(self, Candy, $) {
 			if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
 				// Send Notification
 				var notification = window.webkitNotifications.createNotification(
-						window.location + '/' + Candy.View.getOptions().resources + '/img/favicon.png',
+						window.location + Candy.View.getOptions().resources + 'img/favicon.png',
 						args.name,
-						args.message);
+						args.message.replace(/<(?:.|\n)*?>/gm, ''));
 				notification.show();
 			}
 		}
